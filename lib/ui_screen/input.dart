@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fs_practice/ui_screen/ctrl.dart';
 
 class PageInput extends StatefulWidget {
   const PageInput({super.key});
@@ -10,6 +11,8 @@ class PageInput extends StatefulWidget {
 class _PageInputState extends State<PageInput> {
   final ctrl1 = TextEditingController();
   final ctrl2 = TextEditingController();
+
+  var isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +54,9 @@ class _PageInputState extends State<PageInput> {
                 debugPrint(a.runtimeType.toString());
                 debugPrint(b.toString());
                 debugPrint(b.runtimeType.toString());
+
+                var data = {'nama': a, 'umur': b};
+                createDocument(data);
               },
               child: const Text('submit'),
             ),

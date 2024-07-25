@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
 class UsernameData {
-  final teFieldController1 = TextEditingController();
-  final teFieldController2 = TextEditingController();
+  final ctrl1 = TextEditingController();
+  final ctrl2 = TextEditingController();
 }

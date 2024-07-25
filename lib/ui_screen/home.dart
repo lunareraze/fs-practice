@@ -12,12 +12,14 @@ class HomeList extends StatelessWidget {
         title: const Text('Home'),
       ),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const PageInput(),
-              ));
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PageInput(),
+            ),
+          );
         },
       ),
       body: Center(
@@ -26,13 +28,20 @@ class HomeList extends StatelessWidget {
           children: [
             OutlinedButton(
               onPressed: () async {
-                await FirebaseFirestore.instance.collection('username').doc().set(
-                  {
-                    'id': 'this is id',
-                    'nama': 'shane',
-                    'umur': 22,
-                  },
-                );
+                // await FirebaseFirestore.instance.collection('username').doc().set(
+                //   {
+                //     'id': 'this is id',
+                //     'nama': 'shane',
+                //     'umur': 22,
+                //   },
+                // );
+                // _ct.createDocument(
+                //     // {
+                //     //   // "id": "id from new created",
+                //     //   // "nama": "nama dari created",
+                //     //   // "umur": 22,
+                //     // },
+                //     );
               },
               child: const Text('C'),
             ),
