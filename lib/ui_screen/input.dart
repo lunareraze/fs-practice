@@ -47,7 +47,7 @@ class _PageInputState extends State<PageInput> {
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {
+              onPressed: () async {
                 var a = ctrl1.text;
                 var b = int.parse(ctrl2.text);
                 debugPrint(a);
@@ -56,9 +56,20 @@ class _PageInputState extends State<PageInput> {
                 debugPrint(b.runtimeType.toString());
 
                 var data = {'nama': a, 'umur': b};
-                createDocument(data);
+
+                setState(() {
+                  isLoading = true;
+                });
+                await createDocument(data);
+                setState(() {
+                  isLoading = false;
+                });
+                ctrl1.clear();
+                ctrl2.clear();
+                // ignore: use_build_context_synchronously
+                Navigator.pop(context);
               },
-              child: const Text('submit'),
+              child: Text(isLoading ? 'loading..' : 'submit'),
             ),
           ],
         ),
