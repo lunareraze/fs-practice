@@ -1,48 +1,50 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomeList extends StatelessWidget {
+  const HomeList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text('C'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () async {
+                final result = await FirebaseFirestore.instance.collection('username').get();
+
+                debugPrint(result.toString());
+                debugPrint(result.docs.toString());
+                debugPrint(result.docs[0].data().toString());
+
+                //* this one under this is for when you included the docs on the function,
+                //* then you can access the data by running this dePrint below:
+                // debugPrint(result.data().toString());
+              },
+              child: const Text('R'),
+            ),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text('U'),
+            ),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text('D'),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
