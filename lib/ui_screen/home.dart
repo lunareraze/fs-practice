@@ -19,7 +19,7 @@ class HomeList extends StatelessWidget {
                 await FirebaseFirestore.instance.collection('username').doc().set(
                   {
                     'id': 'this is id',
-                    'name': 'shane',
+                    'nama': 'shane',
                     'umur': 22,
                   },
                 );
@@ -43,7 +43,13 @@ class HomeList extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('username').doc('2eBaMc2LbsgA8cmSruM7').update({
+                  'id': "this is new id from update",
+                  "nama": "shane filan one",
+                  "umur": 24,
+                });
+              },
               child: const Text('U'),
             ),
             const SizedBox(height: 10),
