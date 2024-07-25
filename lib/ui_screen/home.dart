@@ -15,7 +15,15 @@ class HomeList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('username').doc().set(
+                  {
+                    'id': 'this is id',
+                    'name': 'shane',
+                    'umur': 22,
+                  },
+                );
+              },
               child: const Text('C'),
             ),
             const SizedBox(height: 10),
