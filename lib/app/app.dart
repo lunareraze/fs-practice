@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fs_practice/ui_screen/home.dart';
+import 'package:fs_practice/ui_screen/input.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData.dark(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const HomeList(),
+      // home: const HomeList(),
+      home: const PageInput(),
     );
   }
 }
