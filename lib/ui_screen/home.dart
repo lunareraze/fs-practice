@@ -54,7 +54,9 @@ class HomeList extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('username').doc('2eBaMc2LbsgA8cmSruM7').delete();
+              },
               child: const Text('D'),
             ),
           ],
