@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fs_practice/ui_screen/input.dart';
 
 class HomeList extends StatelessWidget {
   const HomeList({super.key});
@@ -9,6 +10,15 @@ class HomeList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PageInput(),
+              ));
+        },
       ),
       body: Center(
         child: Column(
