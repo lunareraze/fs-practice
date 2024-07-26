@@ -3,9 +3,15 @@ import 'package:fs_practice/ui_screen/ctrl.dart';
 import 'package:fs_practice/ui_screen/input.dart';
 import 'package:fs_practice/ui_screen/username_detail.dart';
 
-class UsernameList extends StatelessWidget {
+class UsernameList extends StatefulWidget {
   const UsernameList({super.key});
 
+  @override
+  State<UsernameList> createState() => _UsernameListState();
+}
+
+class _UsernameListState extends State<UsernameList> {
+  var selectedId = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +46,15 @@ class UsernameList extends StatelessWidget {
                           title: Text(snapshot.data!.docs[index].data()['nama']),
                           // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
                           subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+                          selected: selectedId == id,
+                          tileColor: Colors.transparent,
+                          selectedColor: Colors.blue,
 
                           onTap: () {
+                            setState(() {
+                              selectedId = id;
+                            });
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(
