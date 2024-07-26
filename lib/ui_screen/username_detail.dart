@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fs_practice/ui_screen/ctrl.dart';
+import 'package:fs_practice/ctrl.dart';
 
 class UsernameDetail extends StatelessWidget {
   const UsernameDetail({super.key, required this.id});

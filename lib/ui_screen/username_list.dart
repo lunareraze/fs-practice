@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fs_practice/ui_screen/ctrl.dart';
-import 'package:fs_practice/ui_screen/data.dart';
+import 'package:fs_practice/ctrl.dart';
+import 'package:fs_practice/data.dart';
 import 'package:fs_practice/ui_screen/username_input.dart';
 import 'package:fs_practice/ui_screen/username_detail.dart';
 
