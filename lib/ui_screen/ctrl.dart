@@ -9,3 +9,9 @@ Future<QuerySnapshot<Map<String, dynamic>>> getColl() async {
 
   return result;
 }
+
+Future<DocumentSnapshot<Map<String, dynamic>>> readUsernameDetail(String id) async {
+  final result = await FirebaseFirestore.instance.collection('username').doc(id).get();
+
+  return result;
+}

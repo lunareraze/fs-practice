@@ -33,21 +33,27 @@ class UsernameList extends StatelessWidget {
                   return Column(
                       children: List.generate(
                     snapshot.data!.docs.length,
-                    (index) => Card(
-                      child: ListTile(
-                        title: Text(snapshot.data!.docs[index].data()['nama']),
-                        // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
-                        subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const UsernameDetail(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                    (index) {
+                      final id = snapshot.data!.docs[index].id;
+                      return Card(
+                        child: ListTile(
+                          title: Text(snapshot.data!.docs[index].data()['nama']),
+                          // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+                          subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UsernameDetail(
+                                  id: id,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
                   ));
                 }
 
