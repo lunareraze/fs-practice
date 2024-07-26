@@ -56,7 +56,8 @@ class _PageInputState extends State<PageInput> {
                 setState(() {
                   isLoading = true;
                 });
-                await createDocument(data);
+                // await createDocument(data);
+                await createDocumentsForTwoCollections(data);
                 setState(() {
                   isLoading = false;
                 });
