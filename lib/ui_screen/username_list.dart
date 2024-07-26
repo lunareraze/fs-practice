@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fs_practice/ui_screen/ctrl.dart';
+import 'package:fs_practice/ui_screen/data.dart';
 import 'package:fs_practice/ui_screen/input.dart';
 import 'package:fs_practice/ui_screen/username_detail.dart';
 
@@ -11,7 +12,6 @@ class UsernameList extends StatefulWidget {
 }
 
 class _UsernameListState extends State<UsernameList> {
-  var selectedId = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fs_practice/ui_screen/ctrl.dart';
+import 'package:fs_practice/ui_screen/data.dart';
 
 class PageInput extends StatefulWidget {
   const PageInput({super.key});
@@ -9,11 +10,6 @@ class PageInput extends StatefulWidget {
 }
 
 class _PageInputState extends State<PageInput> {
-  final ctrl1 = TextEditingController();
-  final ctrl2 = TextEditingController();
-
-  var isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
