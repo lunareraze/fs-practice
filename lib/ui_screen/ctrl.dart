@@ -8,7 +8,9 @@ Future<void> createDocument(Map<String, dynamic> data) async {
 Future<void> createDocumentsForTwoCollections(Map<String, dynamic> data) async {
   final docId = UniqueKey().toString();
 
-  await FirebaseFirestore.instance.collection('username').doc(docId).set(data);
+  var nama = data['nama'];
+
+  await FirebaseFirestore.instance.collection('username').doc(docId).set({'nama': nama});
   await FirebaseFirestore.instance.collection('usernameDetail').doc(docId).set(data);
 }
 
