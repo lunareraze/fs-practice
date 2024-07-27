@@ -13,7 +13,7 @@ class UsernameDetail extends StatelessWidget {
           title: const Text('Username Detail'),
         ),
         body: FutureBuilder(
-          future: readUsernameDetail(id),
+          future: readUsernameDetailDocs(id),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
