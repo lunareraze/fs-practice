@@ -11,9 +11,6 @@ class PageInput extends StatefulWidget {
 
 class _PageInputState extends State<PageInput> {
   //* make this variable to changed the clear on Page Input
-
-  var isShowClear1 = false;
-  var isShowClear2 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +56,7 @@ class _PageInputState extends State<PageInput> {
                               setState(() {
                                 isShowClear2 = false;
                               });
-                              ctrl1.clear();
+                              ctrl2.clear();
                             },
                             icon: const Icon(Icons.clear))
                         : null),

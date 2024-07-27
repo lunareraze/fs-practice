@@ -5,3 +5,6 @@ final ctrl2 = TextEditingController();
 
 var isLoading = false;
 var selectedId = '';
+
+var isShowClear1 = false;
+var isShowClear2 = false;
