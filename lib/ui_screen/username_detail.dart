@@ -23,9 +23,11 @@ class UsernameDetail extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(snapshot.data!.data()!['nama'].toString()),
-                    Text(snapshot.data!.data()!['umur'].toString()),
-                    Text(snapshot.data!.data()!['id'].toString()),
+                    Text(snapshot.data!.id),
+                    Text(snapshot.data!.nama),
+                    Text(
+                      snapshot.data!.umur.toString(),
+                    ),
                   ],
                 ),
               );

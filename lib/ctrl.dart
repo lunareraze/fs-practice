@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fs_practice/models/user.dart';
 
 // Future<void> createDocument(Map<String, dynamic> data) async {
 //   await FirebaseFirestore.instance.collection('username').doc().set(data);
@@ -24,8 +25,10 @@ Future<QuerySnapshot<Map<String, dynamic>>> getColl() async {
   return result;
 }
 
-Future<DocumentSnapshot<Map<String, dynamic>>> readUsernameDetailDocs(String id) async {
-  final result = await FirebaseFirestore.instance.collection('username').doc(id).get();
+Future<UserX> readUsernameDetailDocs(String id) async {
+  final result = await FirebaseFirestore.instance.collection('usernameDetail').doc(id).get();
 
-  return result;
+  final user = UserX.fromMap(result.data() ?? {});
+
+  return user;
 }
