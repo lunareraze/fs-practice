@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fs_practice/ctrl.dart';
 import 'package:fs_practice/data.dart';
+import 'package:fs_practice/models/user.dart';
 
 class PageInput extends StatefulWidget {
   const PageInput({super.key});
@@ -84,13 +85,19 @@ class _PageInputState extends State<PageInput> {
                   debugPrint(b.toString());
                   debugPrint(b.runtimeType.toString());
 
-                  var data = {'nama': a, 'umur': b};
+                  // var data = {'nama': a, 'umur': b};
+
+                  final newUser = UserX(
+                    nama: a,
+                    umur: b,
+                    id: UniqueKey().toString(),
+                  );
 
                   setState(() {
                     isLoading = true;
                   });
                   // await createDocument(data);
-                  await createDocumentsForTwoCollections(data);
+                  await createDocumentsForTwoCollections(newUser.toMap());
                   setState(() {
                     isLoading = false;
                   });
