@@ -19,14 +19,15 @@ class UsernameDetail extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasData) {
+              final detailx = snapshot.data!;
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(snapshot.data!.id),
-                    Text(snapshot.data!.nama),
+                    Text(detailx.id),
+                    Text(detailx.nama),
                     Text(
-                      snapshot.data!.umur.toString(),
+                      detailx.umur.toString(),
                     ),
                   ],
                 ),

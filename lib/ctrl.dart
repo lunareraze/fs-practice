@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:fs_practice/models/user.dart';
 
 // Future<void> createDocument(Map<String, dynamic> data) async {
@@ -19,10 +20,14 @@ Future<void> createDocumentsForTwoCollections(Map<String, dynamic> data) async {
   await FirebaseFirestore.instance.collection('usernameDetail').doc(docId).set(data);
 }
 
-Future<QuerySnapshot<Map<String, dynamic>>> getColl() async {
+Future<List<UserX>> getColl() async {
+  List<UserX> userList = [];
   final result = await FirebaseFirestore.instance.collection('username').get();
+  for (var element in result.docs) {
+    userList.add(UserX.fromMap(element.data()));
+  }
 
-  return result;
+  return userList;
 }
 
 Future<UserX> readUsernameDetailDocs(String id) async {

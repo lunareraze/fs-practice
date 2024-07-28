@@ -50,14 +50,15 @@ class _UsernameListState extends State<UsernameList> {
                 if (snapshot.hasData) {
                   return Column(
                       children: List.generate(
-                    snapshot.data!.docs.length,
+                    snapshot.data!.length,
                     (index) {
-                      final id = snapshot.data!.docs[index].id;
+                      final data = snapshot.data![index];
+                      final id = data.id;
                       return Card(
                         child: ListTile(
-                          title: Text(snapshot.data!.docs[index].data()['nama']),
+                          title: Text(data.nama),
                           // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
-                          subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+                          subtitle: Text(data.id),
                           selected: selectedId == id,
                           tileColor: Colors.transparent,
                           selectedColor: Colors.blue,
