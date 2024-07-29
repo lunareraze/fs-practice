@@ -1,23 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:fs_practice/models/user.dart';
 
-// Future<void> createDocument(Map<String, dynamic> data) async {
-//   await FirebaseFirestore.instance.collection('username').doc().set(data);
-// }
-
 //*-----------------------------------------------------------------------------
-Future<void> createDocumentsForTwoCollections(Map<String, dynamic> data) async {
+Future<void> createDocumentsForTwoCollections(UserX data) async {
   // final docId = UniqueKey().toString();
-
-  var nama = data['nama'];
-  final docId = data['id'];
+  var nama = data.nama;
+  final docId = data.id;
 
   await FirebaseFirestore.instance.collection('username').doc(docId).set({
     'nama': nama,
     'id': docId,
   });
-  await FirebaseFirestore.instance.collection('usernameDetail').doc(docId).set(data);
+  await FirebaseFirestore.instance.collection('usernameDetail').doc(docId).set(data.toMap());
 }
 
 Future<List<UserX>> getColl() async {
@@ -37,3 +31,13 @@ Future<UserX> readUsernameDetailDocs(String id) async {
 
   return user;
 }
+
+
+//*-----------------------------------------------------------------------------
+
+
+
+
+// Future<void> createDocument(Map<String, dynamic> data) async {
+//   await FirebaseFirestore.instance.collection('username').doc().set(data);
+// }

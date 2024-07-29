@@ -97,7 +97,7 @@ class _PageInputState extends State<PageInput> {
                     isLoading = true;
                   });
                   // await createDocument(data);
-                  await createDocumentsForTwoCollections(newUser.toMap());
+                  await createDocumentsForTwoCollections(newUser);
                   setState(() {
                     isLoading = false;
                   });
