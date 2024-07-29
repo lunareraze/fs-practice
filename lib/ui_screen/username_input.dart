@@ -80,6 +80,7 @@ class _PageInputState extends State<PageInput> {
                 onPressed: () async {
                   var a = ctrl1.text;
                   var b = int.parse(ctrl2.text);
+                  var c = DateTime.now().toString();
                   debugPrint(a);
                   debugPrint(a.runtimeType.toString());
                   debugPrint(b.toString());
@@ -91,6 +92,7 @@ class _PageInputState extends State<PageInput> {
                     nama: a,
                     umur: b,
                     id: UniqueKey().toString(),
+                    createAt: c,
                   );
 
                   setState(() {

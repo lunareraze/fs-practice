@@ -6,10 +6,12 @@ Future<void> createDocumentsForTwoCollections(UserX data) async {
   // final docId = UniqueKey().toString();
   var nama = data.nama;
   final docId = data.id;
+  var createdAt = data.createAt;
 
   await FirebaseFirestore.instance.collection('username').doc(docId).set({
     'nama': nama,
     'id': docId,
+    'created_at': createdAt,
   });
   await FirebaseFirestore.instance.collection('usernameDetail').doc(docId).set(data.toMap());
 }
