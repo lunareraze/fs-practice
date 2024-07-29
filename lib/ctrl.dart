@@ -18,7 +18,13 @@ Future<void> createDocumentsForTwoCollections(UserX data) async {
 
 Future<List<UserX>> getColl() async {
   List<UserX> userList = [];
-  final result = await FirebaseFirestore.instance.collection('username').get();
+  final result = await FirebaseFirestore.instance
+      .collection('username')
+      .orderBy(
+        'created_at',
+        descending: true,
+      )
+      .get();
   for (var element in result.docs) {
     userList.add(UserX.fromMap(element.data()));
   }
