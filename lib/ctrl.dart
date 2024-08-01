@@ -7,7 +7,7 @@ Future<void> createDocumentsForTwoCollections(UserX data) async {
   // final docId = UniqueKey().toString();
   var nama = data.nama;
   final docId = data.id;
-  var createdAt = data.createAt;
+  final createdAt = data.createdAt;
 
   await FirebaseFirestore.instance.collection('username').doc(docId).set({
     'nama': nama,
@@ -18,7 +18,7 @@ Future<void> createDocumentsForTwoCollections(UserX data) async {
 }
 
 Future<List<UserX>> getColl() async {
-  List<UserX> userList = [];
+  List<UserX> users = [];
   final result = await FirebaseFirestore.instance
       .collection('username')
       .orderBy(
@@ -26,12 +26,12 @@ Future<List<UserX>> getColl() async {
         descending: true,
       )
       .limit(3)
-      .startAfter([userList.isEmpty ? "9999-99-99" : userList.last.createAt]).get();
+      .startAfter([userList.isEmpty ? "9999-99-99" : userList.last.createdAt]).get();
   for (var element in result.docs) {
-    userList.add(UserX.fromMap(element.data()));
+    users.add(UserX.fromMap(element.data()));
   }
 
-  return userList;
+  return users;
 }
 
 addToList() async {

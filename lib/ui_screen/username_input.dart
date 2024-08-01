@@ -81,6 +81,8 @@ class _PageInputState extends State<PageInput> {
                   var a = ctrl1.text;
                   var b = int.parse(ctrl2.text);
                   var c = DateTime.now().toString();
+                  var d = UniqueKey().toString();
+
                   debugPrint(a);
                   debugPrint(a.runtimeType.toString());
                   debugPrint(b.toString());
@@ -91,8 +93,8 @@ class _PageInputState extends State<PageInput> {
                   final newUser = UserX(
                     nama: a,
                     umur: b,
-                    id: UniqueKey().toString(),
-                    createAt: c,
+                    createdAt: c,
+                    id: d,
                   );
 
                   setState(() {

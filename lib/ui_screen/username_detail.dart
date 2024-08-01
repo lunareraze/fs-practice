@@ -29,7 +29,7 @@ class UsernameDetail extends StatelessWidget {
                     Text(
                       detailx.umur.toString(),
                     ),
-                    Text(detailx.createAt),
+                    Text(detailx.createdAt),
                   ],
                 ),
               );

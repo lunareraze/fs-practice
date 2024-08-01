@@ -12,6 +12,14 @@ class UsernameList extends StatefulWidget {
 }
 
 class _UsernameListState extends State<UsernameList> {
+  //* to show data before loadmore being tapped.
+  @override
+  void initState() {
+    addToList();
+    debugPrint('ini init..');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +30,7 @@ class _UsernameListState extends State<UsernameList> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            heroTag: null,
             child: const Icon(Icons.add),
             onPressed: () {
               Navigator.push(
@@ -34,6 +43,7 @@ class _UsernameListState extends State<UsernameList> {
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               setState(() {});
             },
@@ -48,51 +58,57 @@ class _UsernameListState extends State<UsernameList> {
               future: getColl(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Column(
-                    children: [
-                      ...List.generate(
-                        // snapshot.data!.length,
-                        userList.length,
-                        (index) {
-                          // final data = snapshot.data![index];
-                          final data = userList[index];
-                          final id = data.id;
-                          return Card(
-                            child: ListTile(
-                              title: Text(data.nama),
-                              // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
-                              subtitle: Text(data.id),
-                              selected: selectedId == id,
-                              tileColor: Colors.transparent,
-                              selectedColor: Colors.blue,
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ...List.generate(
+                          // snapshot.data!.length,
+                          // userList.length,
+                          userList.length,
+                          (index) {
+                            // final data = snapshot.data![index];
+                            final data = userList[index];
+                            final id = data.id;
+                            return Card(
+                              child: ListTile(
+                                title: Text(data.nama),
+                                // title: Text(snapshot.data!.docs[index].data()['nama']),
+                                // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+                                subtitle: Text(data.createdAt),
+                                selected: selectedId == id,
+                                tileColor: Colors.transparent,
+                                selectedColor: Colors.blue,
 
-                              onTap: () {
-                                setState(() {
-                                  selectedId = id;
-                                });
+                                onTap: () {
+                                  setState(() {
+                                    selectedId = id;
+                                  });
 
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => UsernameDetail(
-                                      id: id,
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UsernameDetail(
+                                        id: id,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                      OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            addToList();
-                          });
-                        },
-                        child: const Text('load more..'),
-                      )
-                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        snapshot.connectionState == ConnectionState.waiting
+                            ? const CircularProgressIndicator()
+                            : OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    addToList();
+                                  });
+                                },
+                                child: const Text('load more..'),
+                              )
+                      ],
+                    ),
                   );
                 }
                 return const Text('home');

@@ -1,28 +1,28 @@
 import 'dart:convert';
 
 class UserX {
-  String id;
-  String nama;
-  int umur;
-  String createAt;
+  final String id;
+  final String nama;
+  final int umur;
+  final String createdAt;
   UserX({
     this.id = '',
     this.nama = '',
     this.umur = 0,
-    this.createAt = '',
+    this.createdAt = '',
   });
 
   UserX copyWith({
     String? id,
     String? nama,
     int? umur,
-    String? createAt,
+    String? createdAt,
   }) {
     return UserX(
       id: id ?? this.id,
       nama: nama ?? this.nama,
       umur: umur ?? this.umur,
-      createAt: createAt ?? this.createAt,
+      createdAt: createdAt ?? this.createdAt,
     );
   }
 
@@ -32,7 +32,7 @@ class UserX {
     result.addAll({'id': id});
     result.addAll({'nama': nama});
     result.addAll({'umur': umur});
-    result.addAll({'create_at': createAt});
+    result.addAll({'created_at': createdAt});
 
     return result;
   }
@@ -42,7 +42,7 @@ class UserX {
       id: map['id'] ?? '',
       nama: map['nama'] ?? '',
       umur: map['umur']?.toInt() ?? 0,
-      createAt: map['create_at'] ?? '',
+      createdAt: map['created_at'] ?? '',
     );
   }
 
@@ -52,18 +52,18 @@ class UserX {
 
   @override
   String toString() {
-    return 'UserX(id: $id, nama: $nama, umur: $umur, createAt: $createAt)';
+    return 'UserX(id: $id, nama: $nama, umur: $umur, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is UserX && other.id == id && other.nama == nama && other.umur == umur && other.createAt == createAt;
+    return other is UserX && other.id == id && other.nama == nama && other.umur == umur && other.createdAt == createdAt;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ nama.hashCode ^ umur.hashCode ^ createAt.hashCode;
+    return id.hashCode ^ nama.hashCode ^ umur.hashCode ^ createdAt.hashCode;
   }
 }
