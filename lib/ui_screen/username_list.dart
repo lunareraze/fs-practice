@@ -97,16 +97,20 @@ class _UsernameListState extends State<UsernameList> {
                             );
                           },
                         ),
-                        snapshot.connectionState == ConnectionState.waiting
-                            ? const CircularProgressIndicator()
-                            : OutlinedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    addToList();
-                                  });
-                                },
-                                child: const Text('load more..'),
-                              )
+
+                        // isEnd ?
+                        isEnd
+                            ? const Text('data is ended')
+                            : snapshot.connectionState == ConnectionState.waiting
+                                ? const CircularProgressIndicator()
+                                : OutlinedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        addToList();
+                                      });
+                                    },
+                                    child: const Text('load more..'),
+                                  )
                       ],
                     ),
                   );

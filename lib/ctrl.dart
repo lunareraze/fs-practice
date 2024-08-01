@@ -37,6 +37,10 @@ Future<List<UserX>> getColl() async {
 addToList() async {
   final data = await getColl();
   userList.addAll(data);
+
+  if (data.length < 2) {
+    isEnd = true;
+  }
 }
 
 Future<UserX> readUsernameDetailDocs(String id) async {

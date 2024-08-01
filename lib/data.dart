@@ -12,3 +12,5 @@ var isShowClear1 = false;
 var isShowClear2 = false;
 
 List<UserX> userList = [];
+
+var isEnd = false;
