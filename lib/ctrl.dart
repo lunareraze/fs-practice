@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fs_practice/data.dart';
 import 'package:fs_practice/models/user.dart';
 
 //*-----------------------------------------------------------------------------
@@ -24,12 +25,18 @@ Future<List<UserX>> getColl() async {
         'created_at',
         descending: true,
       )
-      .get();
+      .limit(3)
+      .startAfter([userList.isEmpty ? "9999-99-99" : userList.last.createAt]).get();
   for (var element in result.docs) {
     userList.add(UserX.fromMap(element.data()));
   }
 
   return userList;
+}
+
+addToList() async {
+  final data = await getColl();
+  userList.addAll(data);
 }
 
 Future<UserX> readUsernameDetailDocs(String id) async {

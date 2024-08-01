@@ -49,43 +49,55 @@ class _UsernameListState extends State<UsernameList> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Column(
-                      children: List.generate(
-                    snapshot.data!.length,
-                    (index) {
-                      final data = snapshot.data![index];
-                      final id = data.id;
-                      return Card(
-                        child: ListTile(
-                          title: Text(data.nama),
-                          // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
-                          subtitle: Text(data.id),
-                          selected: selectedId == id,
-                          tileColor: Colors.transparent,
-                          selectedColor: Colors.blue,
+                    children: [
+                      ...List.generate(
+                        // snapshot.data!.length,
+                        userList.length,
+                        (index) {
+                          // final data = snapshot.data![index];
+                          final data = userList[index];
+                          final id = data.id;
+                          return Card(
+                            child: ListTile(
+                              title: Text(data.nama),
+                              // subtitle: Text(snapshot.data!.docs[index].data()['id'].toString()),
+                              subtitle: Text(data.id),
+                              selected: selectedId == id,
+                              tileColor: Colors.transparent,
+                              selectedColor: Colors.blue,
 
-                          onTap: () {
-                            setState(() {
-                              selectedId = id;
-                            });
+                              onTap: () {
+                                setState(() {
+                                  selectedId = id;
+                                });
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => UsernameDetail(
-                                  id: id,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ));
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UsernameDetail(
+                                      id: id,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          setState(() {
+                            addToList();
+                          });
+                        },
+                        child: const Text('load more..'),
+                      )
+                    ],
+                  );
                 }
-
                 return const Text('home');
               },
-            )
+            ),
           ],
         ),
       ),
